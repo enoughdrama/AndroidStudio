@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">ToDo App</string>
+    <string name="add_task">Добавить задачу</string>
+    <string name="delete_task">Удалить задачу</string>
+    <string name="delete_all_tasks">Удалить все задачи</string>
+    <string name="title">Название</string>
+    <string name="description">Описание</string>
+    <string name="no_tasks">Нет задач</string>
+</resources>
