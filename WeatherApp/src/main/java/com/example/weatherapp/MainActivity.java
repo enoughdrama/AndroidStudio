@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView weatherDescriptionTextView;
     private TextView humidityTextView;
     private WeatherApiService weatherApiService;
-    // Демонстрационный API ключ - заменить на свой из openweathermap.org
+
     private static final String API_KEY = "b6907d289e10d714a6e88b30761fae22";
     private static final String BASE_URL = "https://api.openweathermap.org/data/2.5/";
 
@@ -36,7 +36,6 @@ public class MainActivity extends AppCompatActivity {
         weatherDescriptionTextView = findViewById(R.id.weatherDescriptionTextView);
         humidityTextView = findViewById(R.id.humidityTextView);
 
-        // Проверяем доступность сети
         if (NetworkUtils.isNetworkAvailable(this)) {
             setupRetrofit();
         } else {
