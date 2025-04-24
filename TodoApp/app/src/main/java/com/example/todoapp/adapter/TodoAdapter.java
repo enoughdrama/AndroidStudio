@@ -38,14 +38,12 @@ public class TodoAdapter extends RecyclerView.Adapter<TodoAdapter.TodoViewHolder
         holder.textViewDescription.setText(currentItem.getDescription());
         holder.checkBoxCompleted.setChecked(currentItem.isCompleted());
         
-        // Применяем зачеркивание текста, если задача выполнена
         if (currentItem.isCompleted()) {
             holder.textViewTitle.setPaintFlags(holder.textViewTitle.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
         } else {
             holder.textViewTitle.setPaintFlags(holder.textViewTitle.getPaintFlags() & (~Paint.STRIKE_THRU_TEXT_FLAG));
         }
         
-        // Слушатель для чекбокса
         holder.checkBoxCompleted.setOnClickListener(v -> {
             if (listener != null) {
                 currentItem.setCompleted(holder.checkBoxCompleted.isChecked());
@@ -53,7 +51,6 @@ public class TodoAdapter extends RecyclerView.Adapter<TodoAdapter.TodoViewHolder
             }
         });
         
-        // Слушатель для кнопки удаления
         holder.buttonDelete.setOnClickListener(v -> {
             if (listener != null) {
                 listener.onDeleteClick(currentItem);
