@@ -33,33 +33,26 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         
-        // Инициализация repository
         todoRepository = new TodoRepository(getApplication());
         
-        // Настройка RecyclerView
         RecyclerView recyclerView = findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setHasFixedSize(true);
         
-        // Настройка адаптера
         adapter = new TodoAdapter();
         recyclerView.setAdapter(adapter);
         
-        // Наблюдаем за изменением данных
         todoRepository.getAllTodos().observe(this, todoItems -> {
             this.todoItems = todoItems;
             adapter.setTodoItems(todoItems);
         });
         
-        // Настройка FAB для добавления новой задачи
         FloatingActionButton buttonAddTask = findViewById(R.id.button_add_task);
         buttonAddTask.setOnClickListener(v -> showAddTaskDialog());
         
-        // Настройка слушателя для адаптера
         adapter.setOnItemClickListener(new TodoAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(TodoItem todoItem) {
-                // Можно добавить функциональность редактирования задачи
                 Toast.makeText(MainActivity.this, "Нажатие на: " + todoItem.getTitle(), Toast.LENGTH_SHORT).show();
             }
             
@@ -75,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         
-        // Добавляем жесты смахивания для удаления
+        // жесты смахивания для удаления
         new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0,
                 ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
             @Override
